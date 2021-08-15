@@ -18,4 +18,4 @@
 3. <b>Create Database</b> with the name <b>majootest</b> and username database is <b>majootest</b> and password is majootest123 or you can see in file <b>.env</b> or <b>database.php</b>
 4. Run Command <b>php artisan migrate</b> to migrate all table in migration laravel
 5. Run <b>php artisan serve</b>
-6. Open Postman and Import in folder this project or you can use this documentation postman in this link <a href="https://documenter.getpostman.com/view/7846631/Tzz7QeAX"><b>https://documenter.getpostman.com/view/7846631/Tzz7QeAX</b></a>. You can try <b>all access endpoint</b> for this project. 
+6. Open Postman and you can use this documentation postman in this link <a href="https://documenter.getpostman.com/view/7846631/Tzz7QeAX"><b>https://documenter.getpostman.com/view/7846631/Tzz7QeAX</b></a>. You can try <b>all access endpoint</b> for this project. 
