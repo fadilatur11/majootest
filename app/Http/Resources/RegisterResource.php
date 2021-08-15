@@ -25,8 +25,8 @@ class RegisterResource extends JsonResource
     public function with($request)
     {
         return [
-            'message' => 'Data has been created',
-            'status'    => 201,
+            'message' => 'Successfully to process data',
+            'status'    => 200,
             'error'     => 0,
         ];
     }
