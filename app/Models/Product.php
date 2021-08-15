@@ -23,6 +23,6 @@ class Product extends Model
     public function variant()
     {
         return $this->hasMany(ProductVariant::class,'parent_id', 'id')
-                    ->select(['parent_id','name']);
+                    ->select(['id','parent_id','name']);
     }
 }

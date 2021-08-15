@@ -26,7 +26,7 @@ class StoreResource extends JsonResource
     {
         return [
             'message' => 'Successfully to create data',
-            'status' => 201,
+            'status' => 200,
             'error' => 0
         ];
     }

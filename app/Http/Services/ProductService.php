@@ -50,4 +50,33 @@ class ProductService {
 
         return $result;
     }
+
+    public function update($attributes)
+    {
+        $store = $this->repository->getSingleStore(\Request::segment(2));
+
+        $result = Product::where('id','=',$attributes['id'])
+                            ->where('store_id','=', $store->id)
+                            ->first();
+
+        if (empty($result)) {
+            throw new DataEmptyException();
+        }
+
+        $result->update([
+            'name' => $attributes['name'],
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+
+        return $result;
+    }
+
+    public function updateVariant($attributes)
+    {
+        $result = ProductVariant::find($attributes['id']);
+        $result->parent_id = $attributes['parent_id'];
+        $result->name = $attributes['name'];
+        $result->save();
+        return $result;
+    }
 }

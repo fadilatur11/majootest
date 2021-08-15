@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ProductResource extends JsonResource
+class ProductVariantResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,19 +17,17 @@ class ProductResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'variant' => $this->variant,
-            'store' => $this->store,
-            'created_at' => date('d M Y', strtotime($this->created_at))
+            'parent_id' => $this->parent_id,
+            'updated_at' => date('d M Y', strtotime($this->updated_at))
         ];
     }
-
 
     public function with($request)
     {
         return [
-            'message' => 'Data Product has been created',
+            'message' => 'Your product variant has been updated',
             'status' => 200,
-            'error' => 0
+            'error' => 0,
         ];
     }
 }
