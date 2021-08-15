@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StoreController;
 
 /*
@@ -32,5 +33,12 @@ Route::group(['middleware' => 'auth:api'], function () {
         Route::post('create', [StoreController::class, 'create']);
         Route::put('update', [StoreController::class, 'update']);
         Route::delete('delete/{id}', [StoreController::class, 'delete']);
+    });
+
+    Route::prefix('{toko}/product')->group(function () {
+        Route::get('/', [ProductController::class, 'index']);
+        Route::post('create', [ProductController::class, 'create']);
+        Route::put('update', [ProductController::class, 'update']);
+        Route::delete('delete/{id}', [ProductController::class, 'delete']);
     });
 });
