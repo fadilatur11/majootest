@@ -79,4 +79,40 @@ class ProductService {
         $result->save();
         return $result;
     }
+
+    public function delete($id)
+    {
+        $data =  Product::where('id','=',$id)->first();
+
+        if (empty($data)) {
+            throw new DataEmptyException();
+        }
+
+        $data->delete();
+
+        return response()->json([
+            'data' => [],
+            'message' => 'Your product has been deleted',
+            'status' => 200,
+            'error' => 0
+        ]);
+    }
+
+    public function deleteVariant($id)
+    {
+        $data =  ProductVariant::where('id','=',$id)->first();
+
+        if (empty($data)) {
+            throw new DataEmptyException();
+        }
+
+        $data->delete();
+
+        return response()->json([
+            'data' => [],
+            'message' => 'Your product has been deleted',
+            'status' => 200,
+            'error' => 0
+        ]);
+    }
 }

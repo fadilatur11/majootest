@@ -50,9 +50,29 @@ class ProductController extends Controller
         return new ProductResource($data);
     }
 
+    /**
+     * updateVariant
+     *
+     * @param  ProductVariantRequest $request
+     * @param  ProductService $service
+     * @return void
+     */
     public function updateVariant(ProductVariantRequest $request, ProductService $service)
     {
         $data = $service->updateVariant($request->all());
         return new ProductVariantResource($data);
     }
+
+    public function delete($store,$id, ProductService $service)
+    {
+        $data = $service->delete($id);
+        return $data;
+    }
+
+    public function deleteVariant($store,$id, ProductService $service)
+    {
+        $data = $service->deleteVariant($id);
+        return $data;
+    }
+
 }

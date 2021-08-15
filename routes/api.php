@@ -41,5 +41,6 @@ Route::group(['middleware' => 'auth:api'], function () {
         Route::put('update', [ProductController::class, 'update']);
         Route::patch('update/variant', [ProductController::class, 'updateVariant']);
         Route::delete('delete/{id}', [ProductController::class, 'delete']);
+        Route::delete('delete/variant/{id}', [ProductController::class, 'deleteVariant']);
     });
 });
