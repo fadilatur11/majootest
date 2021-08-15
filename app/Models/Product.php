@@ -12,6 +12,7 @@ class Product extends Model
     protected $fillable = [
         'store_id',
         'name',
+        'image'
     ];
 
     public function store()
@@ -23,6 +24,6 @@ class Product extends Model
     public function variant()
     {
         return $this->hasMany(ProductVariant::class,'parent_id', 'id')
-                    ->select(['id','parent_id','name']);
+                    ->select(['id','parent_id','name', 'image']);
     }
 }

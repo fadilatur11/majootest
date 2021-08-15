@@ -26,7 +26,8 @@ class ProductVariantRequest extends FormRequest
         return [
             'id' => 'required|integer',
             'parent_id' => 'required|integer',
-            'name' => 'required'
+            'name' => 'required',
+            'image' => 'nullable'
         ];
     }
 }

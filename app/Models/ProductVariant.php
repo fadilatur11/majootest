@@ -13,5 +13,6 @@ class ProductVariant extends Model
     protected $fillable = [
         'parent_id',
         'name',
+        'image'
     ];
 }

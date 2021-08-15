@@ -17,6 +17,7 @@ class ProductTable extends Migration
             $table->bigIncrements('id');
             $table->integer('store_id');
             $table->string('name', 80);
+            $table->string('image', 150);
             $table->timestamps();
             $table->index(['store_id', 'created_at']);
         });
@@ -25,6 +26,7 @@ class ProductTable extends Migration
             $table->bigIncrements('id');
             $table->integer('parent_id');
             $table->string('name', 80);
+            $table->string('image', 150);
             $table->timestamps();
             $table->index(['parent_id', 'created_at']);
         });

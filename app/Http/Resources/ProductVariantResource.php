@@ -17,6 +17,7 @@ class ProductVariantResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'image' => $this->image,
             'parent_id' => $this->parent_id,
             'updated_at' => date('d M Y', strtotime($this->updated_at))
         ];

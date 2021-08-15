@@ -2,7 +2,7 @@
 
 namespace App\Http\Repositories;
 
-use App\Exceptions\DataEmptyException;
+use App\Exceptions\StoreEmptyException;
 use App\Models\Store;
 
 class StoreRepository
@@ -15,7 +15,7 @@ class StoreRepository
                         ->first();
 
         if (empty($data)) {
-            throw new DataEmptyException();
+            throw new StoreEmptyException();
         }
         return $data;
     }

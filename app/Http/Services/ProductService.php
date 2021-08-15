@@ -34,6 +34,7 @@ class ProductService {
         $result = Product::create([
             'store_id' => $store->id,
             'name' => $attributes['name'],
+            'image' => $attributes['image'],
             'created_at' => date('Y-m-d H:i:s')
         ]);
 
@@ -42,7 +43,8 @@ class ProductService {
             foreach ($attributes['variant'] as $variant) {
                     ProductVariant::create([
                         'parent_id' => $result->id,
-                        'name' => $variant['name'][$sort]
+                        'name' => $variant['name'][$sort],
+                        'image' => $attributes['image'],
                     ]);
             $sort++;
             }
@@ -65,6 +67,7 @@ class ProductService {
 
         $result->update([
             'name' => $attributes['name'],
+            'image' => $attributes['image'],
             'updated_at' => date('Y-m-d H:i:s')
         ]);
 
@@ -76,6 +79,7 @@ class ProductService {
         $result = ProductVariant::find($attributes['id']);
         $result->parent_id = $attributes['parent_id'];
         $result->name = $attributes['name'];
+        $result->image = $attributes['image'];
         $result->save();
         return $result;
     }

@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 use App\Exceptions\DataEmptyException;
+use App\Exceptions\StoreEmptyException;
 
 class Handler extends ExceptionHandler
 {
@@ -41,5 +42,10 @@ class Handler extends ExceptionHandler
         $this->renderable(function (DataEmptyException $e, $request) {
             return $e->ErrorResponse();
         });
+
+        $this->renderable(function (StoreEmptyException $e, $request) {
+            return $e->ErrorResponse();
+        });
+
     }
 }

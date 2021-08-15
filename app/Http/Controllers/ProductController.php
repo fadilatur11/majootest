@@ -8,6 +8,7 @@ use App\Http\Resources\ProductResource;
 use App\Http\Resources\ProductVariantResource;
 use App\Http\Services\ProductService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -73,6 +74,28 @@ class ProductController extends Controller
     {
         $data = $service->deleteVariant($id);
         return $data;
+    }
+
+    public function upload($store, Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:png,jpg,jpeg|max:2048'
+            ]);
+
+            if($request->file()) {
+                $fileName = time().'_'.$request->file->getClientOriginalName();
+                $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
+
+                $name = time().'_'.$request->file->getClientOriginalName();
+                $path = url('/').'/storage/' . $filePath;
+
+
+                return response()->json([
+                    'data' => ['image' => $path],
+                    'message' => 'Successfully to upload'
+                    ]
+                );
+            }
     }
 
 }
