@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\StoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +16,21 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::group(['middleware' => 'auth:api','prefix' => 'auth'], function ($router) {
-    Route::post('/logout', [AuthController::class, 'logout']);
-    Route::post('/refresh', [AuthController::class, 'refresh']);
-    Route::get('/user-profile', [AuthController::class, 'userProfile']);
-});
 Route::post('/auth/login', [AuthController::class, 'login']);
 Route::post('/auth/register', [AuthController::class, 'register']);
+
+Route::group(['middleware' => 'auth:api'], function () {
+
+    Route::prefix('auth')->group(function () {
+        Route::post('/logout', [AuthController::class, 'logout']);
+        Route::post('/refresh', [AuthController::class, 'refresh']);
+        Route::get('/user-profile', [AuthController::class, 'userProfile']);
+    });
+
+    Route::prefix('store')->group(function () {
+        Route::get('/', [StoreController::class, 'index']);
+        Route::post('create', [StoreController::class, 'create']);
+        Route::put('update', [StoreController::class, 'update']);
+        Route::delete('delete/{id}', [StoreController::class, 'delete']);
+    });
+});
